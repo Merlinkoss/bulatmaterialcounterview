@@ -33,12 +33,7 @@ public class CounterView extends RelativeLayout {
 
     public void init(Context context)
     {
-        rootView = inflate(getContext(), R.layout.custom_view, null);
-        addView(rootView);
-    }
-
-    @Override
-    protected void onLayout(boolean b, int i, int i1, int i2, int i3) {
-
+        LayoutInflater  mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mInflater.inflate(R.layout.custom_view, this, true);
     }
 }

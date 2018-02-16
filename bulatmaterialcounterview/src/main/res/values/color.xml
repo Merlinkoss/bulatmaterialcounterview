@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="background">#9455AF</color>
-    <color name="alpha_background">#FAFAFA</color>
+    <color name="alpha_background">#229455AF</color>
     <color name="separator">#559455AF</color>
     <color name="text">@color/background</color>
 </resources>

@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/separator"
         android:layout_toRightOf="@+id/separator"
-        android:background="@drawable/button_left"
+        android:background="@drawable/button_right"
         android:padding="20dp"
         android:text="Выше"
         android:textColor="@color/text"
