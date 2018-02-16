@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/leftButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_left"
+        android:padding="20dp"
+        android:text="Ниже"
+        android:textColor="@color/text"
+        android:textSize="19sp" />
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/leftButton"
+        android:layout_toEndOf="@+id/leftButton"
+        android:layout_toRightOf="@+id/leftButton"
+        android:background="@color/separator" />
+
+    <TextView
+        android:id="@+id/rightButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/separator"
+        android:layout_toRightOf="@+id/separator"
+        android:background="@drawable/button_left"
+        android:padding="20dp"
+        android:text="Выше"
+        android:textColor="@color/text"
+        android:textSize="19sp" />
+
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/circle_shape"
+        android:padding="5dp"
+        android:text="+5"
+        android:textColor="#fff" />
+
+</RelativeLayout>
