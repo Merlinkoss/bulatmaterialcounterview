@@ -5,16 +5,16 @@
 
     <TextView
         android:id="@+id/leftButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="56dp"
+        android:layout_height="32dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/button_left"
         android:gravity="center"
-        android:minWidth="100dp"
-        android:padding="20dp"
+        android:minHeight="32dp"
+        android:minWidth="56dp"
         android:text="-"
         android:textColor="@color/text"
-        android:textSize="19sp" />
+        android:textSize="13dp" />
 
     <View
         android:id="@+id/separator"
@@ -28,28 +28,29 @@
 
     <TextView
         android:id="@+id/rightButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="56dp"
+        android:layout_height="32dp"
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/separator"
         android:layout_toRightOf="@+id/separator"
         android:background="@drawable/button_right"
         android:gravity="center"
-        android:minWidth="100dp"
-        android:padding="20dp"
+        android:minHeight="32dp"
+        android:minWidth="56dp"
         android:text="+"
         android:textColor="@color/text"
-        android:textSize="19sp" />
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/currentValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="-15dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="-11dp"
         android:layout_toLeftOf="@id/separator"
         android:background="@drawable/circle_shape"
-        android:padding="5dp"
+        android:gravity="center"
         android:text="+5"
-        android:textColor="@color/alpha_background" />
+        android:textColor="@color/alpha_background"
+        android:textSize="9dp" />
 
 </RelativeLayout>

@@ -11,6 +11,7 @@
         <attr name="value" format="float" />
         <attr name="secondaryColor" format="color" />
         <attr name="primaryColor" format="color" />
+        <attr name="rippleColor" format="color" />
         <attr name="separatorColor" format="color" />
         <attr name="plusString" format="string" />
         <attr name="minusString" format="string" />
