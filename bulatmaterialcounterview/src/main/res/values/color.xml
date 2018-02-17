@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="background">#9455AF</color>
-    <color name="alpha_background">#F4F3F3</color>
+    <color name="alpha_background">#EBEAE9</color>
     <color name="separator">#E5E5E4</color>
     <color name="ripple">#A16AB8</color>
     <color name="text">@color/background</color>
