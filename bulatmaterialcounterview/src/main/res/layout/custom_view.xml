@@ -8,9 +8,12 @@
         android:id="@+id/leftButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:background="@drawable/button_left"
+        android:gravity="center"
+        android:minWidth="100dp"
         android:padding="20dp"
-        android:text="Ниже"
+        android:text="-"
         android:textColor="@color/text"
         android:textSize="19sp" />
 
@@ -19,6 +22,7 @@
         android:layout_width="1dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/leftButton"
+        android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/leftButton"
         android:layout_toRightOf="@+id/leftButton"
         android:background="@color/separator" />
@@ -27,11 +31,14 @@
         android:id="@+id/rightButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/separator"
         android:layout_toRightOf="@+id/separator"
         android:background="@drawable/button_right"
+        android:gravity="center"
+        android:minWidth="100dp"
         android:padding="20dp"
-        android:text="Выше"
+        android:text="+"
         android:textColor="@color/text"
         android:textSize="19sp" />
 
@@ -43,6 +50,6 @@
         android:background="@drawable/circle_shape"
         android:padding="5dp"
         android:text="+5"
-        android:textColor="#fff" />
+        android:textColor="@color/alpha_background" />
 
 </RelativeLayout>

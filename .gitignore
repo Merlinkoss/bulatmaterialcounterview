@@ -8,3 +8,6 @@
 /build
 /captures
 .externalNativeBuild
+/.idea/misc.xml
+app/libs/
+bulatmaterialcounterview/libs/
