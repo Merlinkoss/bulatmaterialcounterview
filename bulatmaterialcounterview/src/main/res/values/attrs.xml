@@ -7,6 +7,7 @@
         </attr>
         <attr name="maxValue" format="float" />
         <attr name="minValue" format="float" />
+        <attr name="diff" format="float" />
         <attr name="secondaryColor" format="color" />
         <attr name="primaryColor" format="color" />
         <attr name="separatorColor" format="color" />

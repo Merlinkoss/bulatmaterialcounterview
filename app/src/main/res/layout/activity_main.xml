@@ -9,10 +9,19 @@
 
 
     <com.goodboyapp.bulatmaterial.CounterView
+        android:id="@+id/counterView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        app:minusString="-"
+        app:plusString="+"
+        app:maxValue="500"
+        app:minValue="0"
+        app:diff="1"
+        app:primaryColor="@color/background"
+        app:secondaryColor="@color/alpha_background"
+        app:separatorColor="@color/separator"
         />
 
 </RelativeLayout>

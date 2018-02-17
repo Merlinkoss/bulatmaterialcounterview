@@ -2,6 +2,8 @@ package com.goodboyapp.bulatmaterial;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,7 @@ public class CounterView extends RelativeLayout {
     private TextView left;
     private TextView right;
     private TextView counter;
+    private View separator;
 
     private int type = 0; // 0 is intValues, 1 is floatValues
     private float maxValue = 500;
@@ -29,25 +32,25 @@ public class CounterView extends RelativeLayout {
     private String plusString; // text of rightButton
     private String minusString; // text of leftButton
 
-    public CounterView(Context context) {
-        super(context, null);
-        init(context, null);
-    }
+    private float diff = 1.0f; // step by click plus/minus button
+    private float value = 1.0f;
+
+    private OnChangeListener onChangeListener = null;
 
     public CounterView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public void init(Context context, AttributeSet attributeSet)
-    {
-        LayoutInflater  mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    public void init(Context context, AttributeSet attributeSet) {
+        LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         rootView = mInflater.inflate(R.layout.custom_view, this, true);
         left = (TextView) rootView.findViewById(R.id.leftButton);
         right = (TextView) rootView.findViewById(R.id.rightButton);
         counter = (TextView) rootView.findViewById(R.id.counter);
+        separator = rootView.findViewById(R.id.separator);
 
-        if(attributeSet != null) {
+        if (attributeSet != null) {
             TypedArray a = context.getTheme().obtainStyledAttributes(
                     attributeSet,
                     R.styleable.CounterView,
@@ -64,12 +67,22 @@ public class CounterView extends RelativeLayout {
 
             plusString = "+";
             minusString = "-";
+            diff = 1.0f;
+            value = 1.0f;
         }
+
+        setupPrimaryColor(primaryColor);
+        setupSecondaryColor(secondaryColor);
+        setupSeparatorColor(separatorColor);
+        setupTextButton(minusString, plusString);
+        correctMinValue();
+        setupButtonListeners();
     }
 
     private void setupDefaultValue(TypedArray array, Context context) {
         maxValue = array.getFloat(R.styleable.CounterView_maxValue, 500);
         minValue = array.getFloat(R.styleable.CounterView_minValue, 0);
+        diff = array.getFloat(R.styleable.CounterView_diff, 0);
 
         primaryColor = array.getColor(R.styleable.CounterView_primaryColor, context.getResources().getColor(R.color.background));
         separatorColor = array.getColor(R.styleable.CounterView_separatorColor, context.getResources().getColor(R.color.separator));
@@ -79,5 +92,94 @@ public class CounterView extends RelativeLayout {
         minusString = array.getString(R.styleable.CounterView_minusString);
 
         type = array.getInt(R.styleable.CounterView_type, 0);
+    }
+
+    public void setupOnChangeListener(OnChangeListener onChangeListener) {
+        this.onChangeListener = onChangeListener;
+    }
+
+    public void setupSeparatorColor(int separatorColor) {
+        separator.setBackgroundColor(separatorColor);
+    }
+
+    public void setupSecondaryColor(int secondaryColor) {
+        counter.setTextColor(secondaryColor);
+        setupBackgroundButtonsColor(secondaryColor);
+    }
+
+    public void setupPrimaryColor(int primaryColor) {
+        left.setTextColor(primaryColor);
+        right.setTextColor(primaryColor);
+        setupBackgroundCounterColor(primaryColor);
+    }
+
+    public void setupTextButton(String left, String right) {
+        this.left.setText(left);
+        this.right.setText(right);
+    }
+
+    public void setValue(float value) {
+        this.value = value;
+    }
+
+    public float getValue() {
+        return value;
+    }
+
+    private void setupButtonListeners() {
+        left.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onButtonsClick(false);
+            }
+        });
+
+        right.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onButtonsClick(true);
+            }
+        });
+    }
+
+    private void onButtonsClick(boolean isPlus) {
+        float startValue = value;
+        value = isPlus ? value + diff : value - diff;
+        if (value < minValue || value > maxValue)
+            value = startValue;
+
+        if (type == 0)
+            counter.setText((int) value);
+        else
+            counter.setText(String.valueOf(value));
+
+        if (onChangeListener != null)
+            onChangeListener.onChange();
+    }
+
+    private void correctMinValue() {
+        if (type == 1) {
+            minValue = 0f;
+
+            if (value < 0)
+                value = 1f;
+        }
+    }
+
+    private void setupBackgroundCounterColor(int primaryColor) {
+        Drawable back = counter.getBackground();
+        ((GradientDrawable) back).setColor(primaryColor);
+    }
+
+    private void setupBackgroundButtonsColor(int secondaryColor) {
+        Drawable back = left.getBackground();
+        ((GradientDrawable) back).setColor(secondaryColor);
+
+        Drawable back2 = right.getBackground();
+        ((GradientDrawable) back2).setColor(secondaryColor);
+    }
+
+    public interface OnChangeListener {
+        void onChange();
     }
 }
