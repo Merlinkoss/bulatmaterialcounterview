@@ -47,7 +47,7 @@ public class CounterView extends RelativeLayout {
         rootView = mInflater.inflate(R.layout.custom_view, this, true);
         left = (TextView) rootView.findViewById(R.id.leftButton);
         right = (TextView) rootView.findViewById(R.id.rightButton);
-        counter = (TextView) rootView.findViewById(R.id.counter);
+        counter = (TextView) rootView.findViewById(R.id.currentValue);
         separator = rootView.findViewById(R.id.separator);
 
         if (attributeSet != null) {
@@ -75,7 +75,7 @@ public class CounterView extends RelativeLayout {
         setupSecondaryColor(secondaryColor);
         setupSeparatorColor(separatorColor);
         setupTextButton(minusString, plusString);
-        correctMinValue();
+        correctAndSetupMinValue();
         setupButtonListeners();
     }
 
@@ -92,6 +92,7 @@ public class CounterView extends RelativeLayout {
         minusString = array.getString(R.styleable.CounterView_minusString);
 
         type = array.getInt(R.styleable.CounterView_type, 0);
+        value = array.getFloat(R.styleable.CounterView_value, 0);
     }
 
     public void setupOnChangeListener(OnChangeListener onChangeListener) {
@@ -148,21 +149,27 @@ public class CounterView extends RelativeLayout {
         if (value < minValue || value > maxValue)
             value = startValue;
 
-        if (type == 0)
-            counter.setText((int) value);
-        else
-            counter.setText(String.valueOf(value));
+        if (type == 0) {
+            String adder = value >= 0 ? "+" : "-";
+            counter.setText(adder + String.format("%.0f", value));
+        } else
+            counter.setText(String.format("%.1f", value));
 
         if (onChangeListener != null)
             onChangeListener.onChange();
     }
 
-    private void correctMinValue() {
+    private void correctAndSetupMinValue() {
         if (type == 1) {
             minValue = 0f;
 
             if (value < 0)
                 value = 1f;
+
+            counter.setText(String.format("%.1f", value));
+        } else {
+            String adder = value >= 0 ? "+" : "-";
+            counter.setText(adder + String.format("%.0f", value));
         }
     }
 
