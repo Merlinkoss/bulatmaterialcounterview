@@ -3,22 +3,30 @@
 Дизайн : Евгений Булатов
 Разработка: Антон Кондратюк
 
+![example](https://github.com/Merlinkoss/bulatmaterialcounterview/blob/master/img/counter.png)
+
 Что можно:
 - 2 режима: intValues, floatValues
 - Изменение шага
 
 Прочие настройки:
 ```java
-        app:minusString="-"
-        app:plusString="+"
-        app:maxValue="500"
-        app:minValue="0"
-        app:diff="1"
-        app:type="intValues"
-        app:value="8"
-        app:primaryColor="@color/background"
-        app:secondaryColor="@color/alpha_background"
-        app:separatorColor="@color/separator"
+<com.goodboyapp.bulatmaterial.CounterView
+        android:id="@+id/counterView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:bulat_diff="1"
+        app:bulat_maxValue="500"
+        app:bulat_minValue="0"
+        app:bulat_minusString="-"
+        app:bulat_plusString="+"
+        app:bulat_primaryColor="@color/background"
+        app:bulat_secondaryColor="@color/alpha_background"
+        app:bulat_separatorColor="@color/separator"
+        app:bulat_type="intValues"
+        app:bulat_value="8" />
 ```
 Аналогичный функционал для задания данных настроек программно.
 
@@ -28,7 +36,7 @@
 
 ```gradle
 allprojects {
-		repositories {
+	repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
@@ -38,9 +46,9 @@ allprojects {
 И в основной gradle:
 
 ```gradle
-	dependencies {
-	        compile 'com.github.Merlinkoss:bulatmaterialcounterview:master-SNAPSHOT'
-	}
+dependencies {
+	implementation 'com.github.Merlinkoss:bulatmaterialcounterview:master-1.0'
+}
 ```
 
 License
