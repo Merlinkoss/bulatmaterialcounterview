@@ -82,20 +82,20 @@ public class CounterView extends RelativeLayout {
     }
 
     private void setupDefaultValue(TypedArray array, Context context) {
-        maxValue = array.getFloat(R.styleable.CounterView_maxValue, 500);
-        minValue = array.getFloat(R.styleable.CounterView_minValue, 0);
-        diff = array.getFloat(R.styleable.CounterView_diff, 0);
+        maxValue = array.getFloat(R.styleable.CounterView_bulat_maxValue, 500);
+        minValue = array.getFloat(R.styleable.CounterView_bulat_minValue, 0);
+        diff = array.getFloat(R.styleable.CounterView_bulat_diff, 0);
 
-        primaryColor = array.getColor(R.styleable.CounterView_primaryColor, context.getResources().getColor(R.color.background));
-        separatorColor = array.getColor(R.styleable.CounterView_separatorColor, context.getResources().getColor(R.color.separator));
-        rippleColor = array.getColor(R.styleable.CounterView_rippleColor, context.getResources().getColor(R.color.ripple));
-        secondaryColor = array.getColor(R.styleable.CounterView_secondaryColor, context.getResources().getColor(R.color.alpha_background));
+        primaryColor = array.getColor(R.styleable.CounterView_bulat_primaryColor, context.getResources().getColor(R.color.background));
+        separatorColor = array.getColor(R.styleable.CounterView_bulat_separatorColor, context.getResources().getColor(R.color.separator));
+        rippleColor = array.getColor(R.styleable.CounterView_bulat_rippleColor, context.getResources().getColor(R.color.ripple));
+        secondaryColor = array.getColor(R.styleable.CounterView_bulat_secondaryColor, context.getResources().getColor(R.color.alpha_background));
 
-        plusString = array.getString(R.styleable.CounterView_plusString);
-        minusString = array.getString(R.styleable.CounterView_minusString);
+        plusString = array.getString(R.styleable.CounterView_bulat_plusString);
+        minusString = array.getString(R.styleable.CounterView_bulat_minusString);
 
-        type = array.getInt(R.styleable.CounterView_type, 0);
-        value = array.getFloat(R.styleable.CounterView_value, 0);
+        type = array.getInt(R.styleable.CounterView_bulat_type, 0);
+        value = array.getFloat(R.styleable.CounterView_bulat_value, 0);
     }
 
     public void setupOnChangeListener(OnChangeListener onChangeListener) {
@@ -122,12 +122,12 @@ public class CounterView extends RelativeLayout {
         this.right.setText(right);
     }
 
-    public void setValue(float value) {
-        this.value = value;
-    }
-
     public float getValue() {
         return value;
+    }
+
+    public void setValue(float value) {
+        this.value = value;
     }
 
     private void setupButtonListeners() {

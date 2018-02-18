@@ -50,8 +50,8 @@
         android:background="@drawable/circle_shape"
         android:gravity="center"
         android:text="+5"
-        android:textStyle="bold"
         android:textColor="@color/alpha_background"
-        android:textSize="11dp" />
+        android:textSize="11dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
