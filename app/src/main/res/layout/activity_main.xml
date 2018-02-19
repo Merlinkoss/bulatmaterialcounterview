@@ -12,8 +12,11 @@
         android:id="@+id/counterView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/counterView2"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
         app:bulat_diff="1"
         app:bulat_maxValue="500"
         app:bulat_minValue="-10"
@@ -24,5 +27,26 @@
         app:bulat_separatorColor="@color/separator"
         app:bulat_type="intValues"
         app:bulat_value="8" />
+
+    <com.goodboyapp.bulatmaterial.CounterView
+        android:id="@+id/counterView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="21dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        app:bulat_diff="0.5"
+        app:bulat_maxValue="500"
+        app:bulat_minValue="0"
+        app:bulat_minusString="-"
+        app:bulat_plusString="+"
+        app:bulat_primaryColor="@color/background"
+        app:bulat_secondaryColor="@color/alpha_background"
+        app:bulat_separatorColor="@color/separator"
+        app:bulat_type="floatValues"
+        app:bulat_value="8.5" />
 
 </RelativeLayout>
