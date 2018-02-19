@@ -47,7 +47,7 @@ allprojects {
 
 ```gradle
 dependencies {
-	implementation 'com.github.Merlinkoss:bulatmaterialcounterview:1.1'
+	implementation 'com.github.Merlinkoss:bulatmaterialcounterview:1.2'
 }
 ```
 
