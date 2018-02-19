@@ -35,7 +35,7 @@
         android:layout_marginTop="12dp"
         android:layout_toEndOf="@+id/separator"
         android:layout_toRightOf="@+id/separator"
-        android:background="@drawable/button_right"
+        android:background="@drawable/btn_right_ripple"
         android:clickable="true"
         android:gravity="center"
         android:minHeight="32dp"
