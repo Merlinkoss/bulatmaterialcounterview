@@ -23,7 +23,6 @@
         app:bulat_minusString="-"
         app:bulat_plusString="+"
         app:bulat_primaryColor="@color/background"
-        app:bulat_secondaryColor="@color/alpha_background"
         app:bulat_separatorColor="@color/separator"
         app:bulat_type="intValues"
         app:bulat_value="8" />
@@ -44,7 +43,6 @@
         app:bulat_minusString="-"
         app:bulat_plusString="+"
         app:bulat_primaryColor="@color/background"
-        app:bulat_secondaryColor="@color/alpha_background"
         app:bulat_separatorColor="@color/separator"
         app:bulat_type="floatValues"
         app:bulat_value="8.5" />

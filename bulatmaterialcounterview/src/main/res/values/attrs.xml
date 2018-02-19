@@ -9,7 +9,6 @@
         <attr name="bulat_minValue" format="float" />
         <attr name="bulat_diff" format="float" />
         <attr name="bulat_value" format="float" />
-        <attr name="bulat_secondaryColor" format="color" />
         <attr name="bulat_primaryColor" format="color" />
         <attr name="bulat_rippleColor" format="color" />
         <attr name="bulat_separatorColor" format="color" />

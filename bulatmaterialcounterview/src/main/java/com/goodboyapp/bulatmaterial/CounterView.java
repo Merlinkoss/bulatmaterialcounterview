@@ -27,9 +27,7 @@ public class CounterView extends RelativeLayout {
     private float maxValue = 500;
     private float minValue = 0;
     private int primaryColor; // color of text Up/Down and backgrund of counter
-    private int secondaryColor; // color of backgorund button and text of counter
     private int separatorColor; // color of separator
-    private int rippleColor;
     private String plusString; // text of rightButton
     private String minusString; // text of leftButton
 
@@ -63,9 +61,8 @@ public class CounterView extends RelativeLayout {
             maxValue = 500;
             minValue = 0;
             primaryColor = context.getResources().getColor(R.color.background);
-            secondaryColor = context.getResources().getColor(R.color.alpha_background);
+
             separatorColor = context.getResources().getColor(R.color.separator);
-            rippleColor = context.getResources().getColor(R.color.ripple);
 
             plusString = "+";
             minusString = "-";
@@ -74,7 +71,7 @@ public class CounterView extends RelativeLayout {
         }
 
         setupPrimaryColor(primaryColor);
-        setupSecondaryColor(secondaryColor);
+
         setupSeparatorColor(separatorColor);
         setupTextButton(minusString, plusString);
         correctAndSetupMinValue();
@@ -88,8 +85,6 @@ public class CounterView extends RelativeLayout {
 
         primaryColor = array.getColor(R.styleable.CounterView_bulat_primaryColor, context.getResources().getColor(R.color.background));
         separatorColor = array.getColor(R.styleable.CounterView_bulat_separatorColor, context.getResources().getColor(R.color.separator));
-        rippleColor = array.getColor(R.styleable.CounterView_bulat_rippleColor, context.getResources().getColor(R.color.ripple));
-        secondaryColor = array.getColor(R.styleable.CounterView_bulat_secondaryColor, context.getResources().getColor(R.color.alpha_background));
 
         plusString = array.getString(R.styleable.CounterView_bulat_plusString);
         minusString = array.getString(R.styleable.CounterView_bulat_minusString);
@@ -104,11 +99,6 @@ public class CounterView extends RelativeLayout {
 
     public void setupSeparatorColor(int separatorColor) {
         separator.setBackgroundColor(separatorColor);
-    }
-
-    public void setupSecondaryColor(int secondaryColor) {
-        counter.setTextColor(secondaryColor);
-        setupBackgroundButtonsColor(secondaryColor);
     }
 
     public void setupPrimaryColor(int primaryColor) {
@@ -179,14 +169,6 @@ public class CounterView extends RelativeLayout {
     private void setupBackgroundCounterColor(int primaryColor) {
         Drawable back = counter.getBackground();
         ((GradientDrawable) back).setColor(primaryColor);
-    }
-
-    private void setupBackgroundButtonsColor(int secondaryColor) {
-        Drawable back = left.getBackground();
-        ((GradientDrawable) back).setColor(secondaryColor);
-
-        Drawable back2 = right.getBackground();
-        ((GradientDrawable) back2).setColor(secondaryColor);
     }
 
     public interface OnChangeListener {
