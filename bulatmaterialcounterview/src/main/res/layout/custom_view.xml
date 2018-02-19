@@ -8,7 +8,7 @@
         android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_marginTop="12dp"
-        android:background="@drawable/button_left"
+        android:background="@drawable/btn_left_ripple"
         android:clickable="true"
         android:gravity="center"
         android:foreground="?android:attr/selectableItemBackground"
