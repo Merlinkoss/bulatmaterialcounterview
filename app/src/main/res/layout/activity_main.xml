@@ -16,7 +16,7 @@
         android:layout_centerVertical="true"
         app:bulat_diff="1"
         app:bulat_maxValue="500"
-        app:bulat_minValue="0"
+        app:bulat_minValue="-10"
         app:bulat_minusString="-"
         app:bulat_plusString="+"
         app:bulat_primaryColor="@color/background"

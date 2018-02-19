@@ -153,7 +153,7 @@ public class CounterView extends RelativeLayout {
             value = startValue;
 
         if (type == 0) {
-            String adder = value >= 0 ? "+" : "-";
+            String adder = value >= 0 ? "+" : "";
             counter.setText(adder + String.format("%.0f", value));
         } else
             counter.setText(String.format("%.1f", value));
@@ -171,7 +171,7 @@ public class CounterView extends RelativeLayout {
 
             counter.setText(String.format("%.1f", value));
         } else {
-            String adder = value >= 0 ? "+" : "-";
+            String adder = value >= 0 ? "+" : "";
             counter.setText(adder + String.format("%.0f", value));
         }
     }
