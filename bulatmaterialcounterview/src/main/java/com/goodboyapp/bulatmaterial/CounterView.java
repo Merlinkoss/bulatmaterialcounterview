@@ -1,9 +1,14 @@
 package com.goodboyapp.bulatmaterial;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.RippleDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +33,8 @@ public class CounterView extends RelativeLayout {
     private float minValue = 0;
     private int primaryColor; // color of text Up/Down and backgrund of counter
     private int separatorColor; // color of separator
+    private int secondaryColor; // color of back
+    private int rippleColor; // color of ripple effect
     private String plusString; // text of rightButton
     private String minusString; // text of leftButton
 
@@ -61,8 +68,10 @@ public class CounterView extends RelativeLayout {
             maxValue = 500;
             minValue = 0;
             primaryColor = context.getResources().getColor(R.color.background);
+            secondaryColor = context.getResources().getColor(R.color.alpha_background);
 
             separatorColor = context.getResources().getColor(R.color.separator);
+            rippleColor = context.getResources().getColor(R.color.ripple);
 
             plusString = "+";
             minusString = "-";
@@ -76,6 +85,7 @@ public class CounterView extends RelativeLayout {
         setupTextButton(minusString, plusString);
         correctAndSetupMinValue();
         setupButtonListeners();
+        setupRippleColor(rippleColor);
     }
 
     private void setupDefaultValue(TypedArray array, Context context) {
@@ -85,6 +95,8 @@ public class CounterView extends RelativeLayout {
 
         primaryColor = array.getColor(R.styleable.CounterView_bulat_primaryColor, context.getResources().getColor(R.color.background));
         separatorColor = array.getColor(R.styleable.CounterView_bulat_separatorColor, context.getResources().getColor(R.color.separator));
+        secondaryColor = array.getColor(R.styleable.CounterView_bulat_secondaryColor, context.getResources().getColor(R.color.alpha_background));
+        rippleColor = array.getColor(R.styleable.CounterView_bulat_rippleColor, context.getResources().getColor(R.color.ripple));
 
         plusString = array.getString(R.styleable.CounterView_bulat_plusString);
         minusString = array.getString(R.styleable.CounterView_bulat_minusString);
@@ -164,6 +176,26 @@ public class CounterView extends RelativeLayout {
             String adder = value >= 0 ? "+" : "";
             counter.setText(adder + String.format("%.0f", value));
         }
+    }
+
+    private void setupRippleColor(int rippleColor) {
+        Drawable back = left.getBackground();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ((RippleDrawable) back).setColor(ColorStateList.valueOf(rippleColor));
+        } else {
+            GradientDrawable normal = (GradientDrawable) getResources().getDrawable(R.drawable.button_left);
+            normal.setColor(secondaryColor);
+            GradientDrawable pressed = (GradientDrawable) getResources().getDrawable(R.drawable.button_left_clicked);
+            pressed.setColor(rippleColor);
+            left.setBackground(selectorBackgroundColor(normal, pressed));
+        }
+    }
+
+    private StateListDrawable selectorBackgroundColor(Drawable normal, Drawable pressed) {
+        StateListDrawable states = new StateListDrawable();
+        states.addState(new int[]{android.R.attr.state_pressed}, pressed);
+        states.addState(new int[]{}, normal);
+        return states;
     }
 
     private void setupBackgroundCounterColor(int primaryColor) {

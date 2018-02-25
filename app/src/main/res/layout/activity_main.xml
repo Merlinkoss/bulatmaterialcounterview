@@ -22,6 +22,8 @@
         app:bulat_minValue="-10"
         app:bulat_minusString="-"
         app:bulat_plusString="+"
+        app:bulat_rippleColor="@color/ripple"
+        app:bulat_secondaryColor="#000"
         app:bulat_primaryColor="@color/background"
         app:bulat_separatorColor="@color/separator"
         app:bulat_type="intValues"
